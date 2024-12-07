@@ -16,4 +16,12 @@ class BookRepositoryImpl: BookRepository {
         }
     }
 
+    override suspend fun addBook(book: Book): Book {
+        return try {
+            localDataSource.addBook(book)
+        } catch (e: Exception) {
+            throw Exception("Error adding book", e)
+        }
+    }
+
 }

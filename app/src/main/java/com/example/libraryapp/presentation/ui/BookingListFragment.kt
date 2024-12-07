@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.libraryapp.R
+import com.example.libraryapp.data.datasource.BookDatabase.addBook
 import com.example.libraryapp.databinding.DialogAddBookBinding
 import com.example.libraryapp.databinding.FragmentBookingListBinding
 import com.example.libraryapp.presentation.adapter.BookAdapter
@@ -76,12 +77,29 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
             .setView(dialogBinding.root)
             .setPositiveButton("Add") { _, _ ->
                 with(dialogBinding) {
-                   //TODO call the function that add a new book
+                    val title = titleInput.text.toString().trim()
+                    val author = authorInput.text.toString().trim()
+                    val year = yearInput.text.toString().toIntOrNull()
+                    val description = descriptionInput.text.toString().trim()
+
+                    //VALIDATIONS
+                    if (title.isEmpty() || author.isEmpty() || year == null || description.isEmpty()) {
+                        Snackbar.make(
+                            binding.root,
+                            "All fields are required and year must be valid.",
+                            Snackbar.LENGTH_LONG
+                        ).show()
+                        return@setPositiveButton
+                    }
+
+                    //CALL VIEW MODEL ADD BOOK
+                    viewModel.addBook(title, author, year, description)
                 }
             }
             .setNegativeButton("Cancel", null)
             .show()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
