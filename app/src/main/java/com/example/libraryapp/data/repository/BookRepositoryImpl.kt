@@ -24,4 +24,15 @@ class BookRepositoryImpl: BookRepository {
         }
     }
 
+    override suspend fun updateBook(book: Book): Book {
+        return try {
+            localDataSource.updateBook(book)
+        } catch (e: Exception) {
+            throw Exception("Error updating book", e)
+        }
+    }
+
+    override suspend fun getBookById(id: Int): Book? {
+        return localDataSource.getBook(id)
+    }
 }

@@ -9,4 +9,7 @@ interface BookRepository {
 
     suspend fun addBook(book: Book): Book
 
+    suspend fun updateBook(book: Book): Book
+
+    suspend fun getBookById(id: Int): Book?
 }

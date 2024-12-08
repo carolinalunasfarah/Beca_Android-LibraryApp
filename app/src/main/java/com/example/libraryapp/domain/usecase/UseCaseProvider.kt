@@ -4,6 +4,7 @@ object UseCaseProvider {
     private var getBooksUseCase: GetBooksUseCase? = null
     //private var getBookDetailUseCase: GetBookDetailUseCase? = null
     private var addBookUseCase: AddBookUseCase? = null
+    private var updateBookUseCase: UpdateBookUseCase? = null
 
     fun provideGetBooksUseCase(): GetBooksUseCase {
         if (getBooksUseCase == null) {
@@ -25,5 +26,12 @@ object UseCaseProvider {
             addBookUseCase = AddBookUseCase()
         }
         return addBookUseCase!!
+    }
+
+    fun provideUpdateBookUseCase(): UpdateBookUseCase {
+        if (updateBookUseCase == null) {
+            updateBookUseCase = UpdateBookUseCase()
+        }
+        return updateBookUseCase!!
     }
 }

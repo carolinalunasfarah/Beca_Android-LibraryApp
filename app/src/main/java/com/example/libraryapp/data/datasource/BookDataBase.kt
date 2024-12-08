@@ -87,10 +87,13 @@ object BookDatabase {
         val index = books.indexOfFirst { it.id == book.id }
         if (index != -1) {
             books[index] = book
+        } else {
+            throw Exception("Book not found")
         }
     }
 
     fun deleteBook(id: Int) {
         books.removeIf { it.id == id }
     }
+
 }

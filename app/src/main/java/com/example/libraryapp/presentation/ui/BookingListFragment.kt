@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.libraryapp.R
-import com.example.libraryapp.data.datasource.BookDatabase.addBook
 import com.example.libraryapp.databinding.DialogAddBookBinding
 import com.example.libraryapp.databinding.FragmentBookingListBinding
 import com.example.libraryapp.presentation.adapter.BookAdapter
@@ -18,6 +18,8 @@ import com.example.libraryapp.presentation.viewmodel.BookListViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+
+private const val ARG_PARAM1 = "bookId"
 
 class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
 
@@ -58,7 +60,10 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
 
     private fun setupRecyclerView() {
         bookAdapter = BookAdapter { book ->
-            // Navegar al detalle usando Navigation Component pasar el id
+            val bundle = Bundle().apply {
+                putInt(ARG_PARAM1, book.id)
+            }
+            findNavController().navigate(R.id.action_bookingListFragment_to_bookingDetailFragment, bundle)
         }
         binding.recyclerView.apply {
             adapter = bookAdapter
