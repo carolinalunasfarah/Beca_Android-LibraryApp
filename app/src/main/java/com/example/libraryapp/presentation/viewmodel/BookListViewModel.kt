@@ -40,12 +40,12 @@ class BookListViewModel : ViewModel() {
         }
     }
 
-    fun addBook(title: String, author: String, year: Int, description: String) {
+    fun addBook(title: String, author: String, year: Int, description: String, isAvailable: Boolean) {
         viewModelScope.launch {
             _isLoading.value = true
             try {
                 // ADD BOOK USING THE USE CASE
-                val newBook = addBookUseCase(title, author, year, description)
+                val newBook = addBookUseCase(title, author, year, description, isAvailable)
 
                 // UPDATE BOOKS AFTER ADDING A NEW ONE
                 val updatedBooks = _books.value.orEmpty() + newBook

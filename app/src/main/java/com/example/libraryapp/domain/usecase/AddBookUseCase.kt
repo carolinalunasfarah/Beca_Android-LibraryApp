@@ -11,6 +11,7 @@ class AddBookUseCase {
         author: String,
         year: Int,
         description: String,
+        isAvailable: Boolean,
         ): Book {
 
         val book = Book(
@@ -19,7 +20,7 @@ class AddBookUseCase {
             author = author,
             year = year,
             description = description,
-            isAvailable = true
+            isAvailable = isAvailable
         )
 
         return repository.addBook(book)

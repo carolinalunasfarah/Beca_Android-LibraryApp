@@ -86,6 +86,8 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
                     val author = authorInput.text.toString().trim()
                     val year = yearInput.text.toString().toIntOrNull()
                     val description = descriptionInput.text.toString().trim()
+                    val isAvailable = availableCheckbox.isChecked
+
 
                     //VALIDATIONS
                     if (title.isEmpty() || author.isEmpty() || year == null || description.isEmpty()) {
@@ -98,7 +100,7 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
                     }
 
                     //CALL VIEW MODEL ADD BOOK
-                    viewModel.addBook(title, author, year, description)
+                    viewModel.addBook(title, author, year, description, isAvailable)
                 }
             }
             .setNegativeButton("Cancel", null)
