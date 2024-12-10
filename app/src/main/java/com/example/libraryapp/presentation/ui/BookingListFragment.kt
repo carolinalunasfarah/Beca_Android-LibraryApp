@@ -39,7 +39,7 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val button = view.findViewById<FloatingActionButton>(R.id.addButton)
+        val button = binding.addButton
         setupRecyclerView()
 
         button.setOnClickListener {
@@ -56,6 +56,14 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
                 Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
             }
         }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -63,7 +71,10 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
             val bundle = Bundle().apply {
                 putInt(ARG_PARAM1, book.id)
             }
-            findNavController().navigate(R.id.action_bookingListFragment_to_bookingDetailFragment, bundle)
+            findNavController().navigate(
+                R.id.action_bookingListFragment_to_bookingDetailFragment,
+                bundle
+            )
         }
         binding.recyclerView.apply {
             adapter = bookAdapter

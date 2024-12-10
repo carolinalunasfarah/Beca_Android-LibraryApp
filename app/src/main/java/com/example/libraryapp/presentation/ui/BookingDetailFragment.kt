@@ -1,5 +1,6 @@
 package com.example.libraryapp.presentation.ui
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,6 @@ import com.example.libraryapp.presentation.viewmodel.BookDetailViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class BookingDetailFragment : Fragment(R.layout.fragment_booking_detail) {
-
-    private var param1: Int? = null
 
     private var _binding: FragmentBookingDetailBinding? = null
     private val binding get() = _binding!!
@@ -41,12 +40,27 @@ class BookingDetailFragment : Fragment(R.layout.fragment_booking_detail) {
                 binding.authorText.text = it.author
                 binding.yearText.text = it.year.toString()
                 binding.descriptionText.text = it.description
+                binding.availabilityChip.text = if (it.isAvailable) "Available" else "Checked Out"
+                binding.availabilityChip.chipBackgroundColor = ColorStateList.valueOf(
+                    requireContext().getColor(
+                        if (it.isAvailable) R.color.available
+                        else R.color.checked_out
+                    )
+                )
             }
         }
 
         viewModel.error.observe(viewLifecycleOwner) { error ->
             error?.let {
                 Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
+            }
+        }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
             }
         }
 

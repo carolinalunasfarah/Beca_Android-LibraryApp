@@ -13,7 +13,7 @@ object BookDatabase {
                 title = "1984",
                 author = "George Orwell",
                 year = 1949,
-                description = "Distopía clásica sobre vigilancia y control...",
+                description = "Classic dystopia about surveillance and control...",
                 isAvailable = true
             ),
             Book(
@@ -21,7 +21,7 @@ object BookDatabase {
                 title = "Fahrenheit 451",
                 author = "Ray Bradbury",
                 year = 1953,
-                description = "En un futuro distópico, los libros están prohibidos...",
+                description = "In a dystopian future, books are banned...",
                 isAvailable = false
             ),
             Book(
@@ -29,7 +29,7 @@ object BookDatabase {
                 title = "Brave New World",
                 author = "Aldous Huxley",
                 year = 1932,
-                description = "Una sociedad futurista dominada por la tecnología y la genética...",
+                description = "A futuristic society dominated by technology and genetics...",
                 isAvailable = true
             ),
             Book(
@@ -37,7 +37,7 @@ object BookDatabase {
                 title = "The Catcher in the Rye",
                 author = "J.D. Salinger",
                 year = 1951,
-                description = "Un adolescente rebelde reflexiona sobre la vida y su entorno...",
+                description = "A rebellious teenager reflects on life and his surroundings...",
                 isAvailable = true
             ),
             Book(
@@ -45,7 +45,7 @@ object BookDatabase {
                 title = "To Kill a Mockingbird",
                 author = "Harper Lee",
                 year = 1960,
-                description = "Un abogado lucha por la justicia racial en el sur de los Estados Unidos...",
+                description = "A lawyer fights for racial justice in the southern United States...",
                 isAvailable = false
             ),
             Book(
@@ -53,7 +53,7 @@ object BookDatabase {
                 title = "Moby-Dick",
                 author = "Herman Melville",
                 year = 1851,
-                description = "La obsesiva caza de una ballena blanca por parte del Capitán Ahab...",
+                description = "Captains Ahab's obsessive hunt for a white whale...",
                 isAvailable = true
             ),
             Book(
@@ -61,7 +61,7 @@ object BookDatabase {
                 title = "Pride and Prejudice",
                 author = "Jane Austen",
                 year = 1813,
-                description = "Un romance clásico que explora los prejuicios y la sociedad inglesa...",
+                description = "A classic romance that explores prejudice and English society...",
                 isAvailable = true
             ),
             Book(
@@ -69,7 +69,7 @@ object BookDatabase {
                 title = "The Great Gatsby",
                 author = "F. Scott Fitzgerald",
                 year = 1925,
-                description = "Un millonario misterioso busca recuperar el amor perdido en los locos años 20...",
+                description = "A mysterious millionaire seeks to recover lost love in the Roaring 20's...",
                 isAvailable = false
             ),
         ))

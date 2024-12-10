@@ -14,6 +14,12 @@ class AddBookUseCase {
         isAvailable: Boolean,
         ): Book {
 
+        //VALIDATIONS
+        require(title.isNotBlank()) { "Title cannot be empty" }
+        require(author.isNotBlank()) { "Author cannot be empty" }
+        require(year > 0) { "Invalid year" }
+        require(description.isNotBlank()) { "Description cannot be empty" }
+
         val book = Book(
             id = 0,
             title = title,
