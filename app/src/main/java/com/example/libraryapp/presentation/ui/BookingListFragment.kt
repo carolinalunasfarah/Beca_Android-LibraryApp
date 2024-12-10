@@ -58,12 +58,9 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            if (isLoading) {
-                binding.progressBar.visibility = View.VISIBLE
-            } else {
-                binding.progressBar.visibility = View.GONE
-            }
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
+
     }
 
     private fun setupRecyclerView() {
@@ -118,6 +115,11 @@ class BookingListFragment : Fragment(R.layout.fragment_booking_list) {
             .show()
     }
 
+    //REFRESH after updating a book to display correctly coming back to the list
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadBooks()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
