@@ -5,14 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.libraryapp.domain.model.Book
-import com.example.libraryapp.domain.usecase.GetBookByIdUseCase
-import com.example.libraryapp.domain.usecase.UpdateBookUseCase
+import com.example.libraryapp.domain.usecase.UseCaseProvider
 import kotlinx.coroutines.launch
 
 class BookDetailViewModel : ViewModel() {
 
-    private val getBookByIdUseCase = GetBookByIdUseCase()
-    private val updateBookUseCase = UpdateBookUseCase()
+    private val getBookByIdUseCase = UseCaseProvider.provideGetBookByIdUseCase()
+    private val updateBookUseCase = UseCaseProvider.provideUpdateBookUseCase()
 
     private val _book = MutableLiveData<Book?>()
     val book: LiveData<Book?> = _book

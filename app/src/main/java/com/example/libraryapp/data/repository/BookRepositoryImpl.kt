@@ -33,6 +33,10 @@ class BookRepositoryImpl: BookRepository {
     }
 
     override suspend fun getBookById(id: Int): Book? {
-        return localDataSource.getBook(id)
+        return try {
+            localDataSource.getBook(id)
+        } catch (e: Exception) {
+            throw Exception("Error fetching book by ID", e)
+        }
     }
 }

@@ -6,7 +6,7 @@ object BookDatabase {
     private val books = mutableListOf<Book>()
 
     init {
-        // Initial data
+        //INITIAL DATA
         books.addAll(listOf(
             Book(
                 id = 1,
