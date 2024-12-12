@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LibraryApp</string>
+    <string name="title">Título</string>
+    <string name="author">Autor</string>
+    <string name="publication_year">Año publicación</string>
+    <string name="description">Descripción</string>
+    <string name="is_available">Disponible</string>
+    <string name="label_author">Autor:</string>
+    <string name="label_year">Año:</string>
+    <string name="label_description">Descripción:</string>
+    <string name="update">Actualizar</string>
+    <string name="add_button_icon">Botón agregar</string>
+    <string name="no_books_available">Libros no disponibles</string>
+    <string name="chip_available">Disponibilidad: disponible</string>
+    <string name="chip_checked_out">DIsponibilidad: no disponible</string>
+</resources>

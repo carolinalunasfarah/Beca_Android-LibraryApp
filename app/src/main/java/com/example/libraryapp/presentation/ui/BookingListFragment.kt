@@ -16,7 +16,6 @@ import com.example.libraryapp.databinding.FragmentBookingListBinding
 import com.example.libraryapp.presentation.adapter.BookAdapter
 import com.example.libraryapp.presentation.viewmodel.BookListViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 private const val ARG_PARAM1 = "bookId"

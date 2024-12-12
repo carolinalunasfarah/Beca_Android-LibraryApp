@@ -47,13 +47,19 @@ class BookingDetailFragment : Fragment(R.layout.fragment_booking_detail) {
                 binding.authorText.text = it.author
                 binding.yearText.text = it.year.toString()
                 binding.descriptionText.text = it.description
-                binding.availabilityChip.text = if (it.isAvailable) "Available" else "Checked Out"
-                binding.availabilityChip.chipBackgroundColor = ColorStateList.valueOf(
-                    requireContext().getColor(
-                        if (it.isAvailable) R.color.available
-                        else R.color.checked_out
+
+                val isAvailable = it.isAvailable
+                binding.availabilityChip.apply {
+                    text = if (isAvailable) "Available" else "Checked Out"
+                    chipBackgroundColor = ColorStateList.valueOf(
+                        requireContext().getColor(
+                            if (isAvailable) R.color.available else R.color.checked_out
+                        )
                     )
-                )
+                    contentDescription = getString(
+                        if (isAvailable) R.string.chip_available else R.string.chip_checked_out
+                    )
+                }
             }
         }
 
