@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.libraryapp.R
 import com.example.libraryapp.databinding.DialogAddBookBinding
 import com.example.libraryapp.databinding.FragmentBookingDetailBinding
@@ -32,11 +33,28 @@ class BookingDetailFragment : Fragment(R.layout.fragment_booking_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = binding.updateButton
+        //BUTTONS
+        val updateButton = binding.updateButton
+        val deleteButton = binding.deleteButton
+
+        //ARG
         val bookId = arguments?.getInt("bookId") ?: return
 
-        button.setOnClickListener {
+        //UPDATE DIALOG
+        updateButton.setOnClickListener {
             showUpdateDialog()
+        }
+
+        //DELETE DIALOG
+        deleteButton.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Delete Book")
+                .setMessage("Are you sure you want to delete this book?")
+                .setPositiveButton("Yes") { _, _ ->
+                    viewModel.deleteBook(bookId)
+                }
+                .setNegativeButton("No", null)
+                .show()
         }
 
         viewModel.loadBook(bookId)
@@ -60,6 +78,14 @@ class BookingDetailFragment : Fragment(R.layout.fragment_booking_detail) {
                         if (isAvailable) R.string.chip_available else R.string.chip_checked_out
                     )
                 }
+            }
+        }
+
+        //OBSERVE DELETE
+        viewModel.bookDeleted.observe(viewLifecycleOwner) { isDeleted ->
+            if (isDeleted) {
+                Snackbar.make(binding.root, "Book deleted successfully", Snackbar.LENGTH_LONG).show()
+                findNavController().popBackStack()
             }
         }
 
@@ -122,4 +148,5 @@ class BookingDetailFragment : Fragment(R.layout.fragment_booking_detail) {
             .setNegativeButton("Cancel", null)
             .show()
     }
+
 }

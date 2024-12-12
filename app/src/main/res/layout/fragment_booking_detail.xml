@@ -118,15 +118,26 @@
                     app:layout_constraintTop_toBottomOf="@id/descriptionLabel" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/updateButton"
+                    android:id="@+id/deleteButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/update"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/delete"
+                    android:backgroundTint="@color/delete"
+                    app:layout_constraintEnd_toStartOf="@id/updateButton"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/descriptionText" />
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/updateButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/update"
+                    android:backgroundTint="@color/update"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/deleteButton"
+                    app:layout_constraintTop_toBottomOf="@id/descriptionText" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

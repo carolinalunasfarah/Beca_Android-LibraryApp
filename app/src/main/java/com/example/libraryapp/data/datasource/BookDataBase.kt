@@ -92,8 +92,9 @@ object BookDatabase {
         }
     }
 
-    fun deleteBook(id: Int) {
+    fun deleteBook(id: Int): Book? {
+        val bookToDelete = books.find { it.id == id }
         books.removeIf { it.id == id }
+        return bookToDelete
     }
-
 }

@@ -27,4 +27,9 @@ class LocalBookDataSource {
         return book
     }
 
+    suspend fun deleteBook(id: Int): Book? {
+        delay(500)
+        return BookDatabase.deleteBook(id)
+    }
+
 }

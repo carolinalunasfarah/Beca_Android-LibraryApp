@@ -13,6 +13,7 @@
     <string name="label_year">Year:</string>
     <string name="label_description">Description:</string>
     <string name="update">Update</string>
+    <string name="delete">Delete</string>
 
     //Books list
     <string name="add_button_icon">Add button icon</string>
@@ -21,5 +22,4 @@
     //Availability chip
     <string name="chip_available">Availability status: Available</string>
     <string name="chip_checked_out">Availability status: Checked out</string>
-
 </resources>

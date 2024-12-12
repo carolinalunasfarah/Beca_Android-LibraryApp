@@ -12,6 +12,7 @@ class BookDetailViewModel : ViewModel() {
 
     private val getBookByIdUseCase = UseCaseProvider.provideGetBookByIdUseCase()
     private val updateBookUseCase = UseCaseProvider.provideUpdateBookUseCase()
+    private val deleteBookByIdUseCase = UseCaseProvider.provideDeleteBookByIdUseCase()
 
     private val _book = MutableLiveData<Book?>()
     val book: LiveData<Book?> = _book
@@ -21,6 +22,9 @@ class BookDetailViewModel : ViewModel() {
 
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> = _error
+
+    private val _bookDeleted = MutableLiveData<Boolean>()
+    val bookDeleted: LiveData<Boolean> get() = _bookDeleted
 
     fun loadBook(id: Int) {
         viewModelScope.launch {
@@ -43,6 +47,24 @@ class BookDetailViewModel : ViewModel() {
                 updateBookUseCase(book)
                 loadBook(id = book.id)
                 _error.value = null
+            } catch (e: Exception) {
+                _error.value = e.message
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    fun deleteBook(id: Int) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val deletedBook = deleteBookByIdUseCase(id)
+                if (deletedBook != null) {
+                    _bookDeleted.value = true
+                } else {
+                    _error.value = "Failed to delete book"
+                }
             } catch (e: Exception) {
                 _error.value = e.message
             } finally {

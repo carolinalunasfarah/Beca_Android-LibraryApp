@@ -39,4 +39,12 @@ class BookRepositoryImpl: BookRepository {
             throw Exception("Error fetching book by ID", e)
         }
     }
+
+    override suspend fun deleteBookById(id: Int): Book? {
+        return try {
+            localDataSource.deleteBook(id)
+        } catch (e: Exception) {
+            throw Exception("Error deleting book by ID", e)
+        }
+    }
 }

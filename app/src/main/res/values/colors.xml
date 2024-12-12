@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="available">#007300</color>
-    <color name="checked_out">#730000</color>
+    <color name="available">#309148</color>
+    <color name="checked_out">#913035</color>
+    <color name="update">#6C6EA0</color>
+    <color name="delete">#917B30</color>
 </resources>
